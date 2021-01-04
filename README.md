@@ -1,7 +1,7 @@
 # Web based database management program.
-## I used python flask to connect MySQL database besides i used basic level HTML and CSS.
+I used python flask to connect MySQL database besides i used basic level HTML and CSS.
 
-# The main purpose of this program is to manage database with a simple web based interface
+## The main purpose of this program is to manage database with a simple web based interface
 
 - project.ipynb : i created my database and filled the tables also i write down the complex command that i used.
 - app.py : When you run it, it leads you to a a web page of my database user interface where you can add,show and execute complex command.
