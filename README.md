@@ -2,7 +2,7 @@
 - I used python flask to connect MySQL database besides i used basic level HTML and CSS.
 
 ## The main purpose of this program is to manage database with a simple web based interface
-
+- I used XAMPP to run my MySQL module. you have to run project.ipynb after your MySQL has run. Check the password or name of your connection in project.ipynb to crete and fill the tables correctly.
 - project.ipynb : i created my database and filled the tables also i write down the complex command that i used.
 - app.py : When you run it, it leads you to a a web page of my database user interface where you can add,show and execute complex command.
 - For the signup page you must enter any password with more than 10 characters in length, there are no correct password i just wanna use flash() method in Flask.
