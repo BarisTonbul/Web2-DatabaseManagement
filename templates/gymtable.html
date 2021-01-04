@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GYM TABLE</title>
+    <link rel="stylesheet" href="../static/tables.css">
+    <style>
+         #formArea{
+            float: left;
+            overflow: auto;
+        }
+        .container{
+            overflow: auto;
+        }
+        #tableID{
+            float: left;
+            margin-left: 25%;
+        }
+        #secondPart{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">GYM TABLE</h1>
+<div class="container">
+        <!--GETTING INPUT DATA FROM USER-->
+    <div id="formArea">
+        <form method="POST" action="">
+            <h2>ADD NEW ELEMENT</h2>
+            ID <input type="number" name="ID" style="margin-left: 30px;"> <br>
+            NAME <input type="text" name="NAME"><br><br>
+            <input type="submit" name="submit_button" value="add">
+            <input type="submit" name="submit_button" value="return">
+            <hr>
+            <h2>REMOVE AN ELEMENT BY ID</h2>
+            ID<input type="number" name="ID_remove" style="margin-left: 50px;" placeholder="Please enter an ID">
+            <input type="submit" name="submit_button" value="remove">
+            <input type="submit" name="submit_button" value="return">
+            <hr>
+            <h2>CHANGES BY WRITING</h2>
+            <h4>Write your code down below</h4>
+            <input type="text" name="code" style="width: 60%;">
+            <input type="submit" name="submit_button" value="submit">
+            <input type="submit" name="submit_button" value="return">
+        </form><br>
+            <ul >
+                <h4>Example for adding</h4>
+                <li style="font-weight: bold;">insert into gym values (ID,'NAME'); </li>
+                <li>ID must be integer</li>
+                <li>NAME must be string</li>
+            </ul>
+            <ul >
+                <h4>Example for deleting</h4>
+                <li style="font-weight: bold;">delete from gym where g_id/g_name ='Your text';</li>
+                <li>ID must be integer</li>
+                <li>NAME must be string</li>
+            </ul>
+    </div>
+    <div id="tableID">
+        <table >
+            <!--THIS IS FOR TABLE HEADINGS-->
+            <tr>
+                <th>GYM ID</th>
+                <th>GYM NAME</th>
+                {%if x==1%}
+                <th>PT ID</th>
+                {%endif%}
+            </tr>
+            <!--I USED FOR LOOP IN PYTHON LANGUAGE TO FILL ROWS-->
+            {% for result in results %}
+            <tr>
+                <td>{{ result[0] }}</td>
+                <td>{{ result[1]  }}</td>
+                <td>{{ result[2]  }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <!--bootstrapten aldigimiz kodu alert veya warning olarak degistirebiliyoruz-->
+                    <div class="alert {{category}} alert-dismissible fade show">{{message}}</div>
+                    {% endfor %}
+                {% endif %}
+        {% endwith %}
+    </div>
+    <div id="secondPart">
+        <form method="POST" >
+                <h2 style="text-align: center;" >WANNA EXECUTE COMPLEX COMMANDS ?</h2>
+            <ol>
+                <li>Use inner join to construct table has data from gym and  personal_trainer 
+                    <!--i can create buttons with same text using this type of button-->
+                    <button type="input" name="submit_button" value="execute1">execute</button>  
+                </li>
+                <li>By entering the GYM ID you can see the oldest person's age <br>
+                    <input type="number" name="ID_execute">
+                    <button type="input" name="submit_button" value="execute2">execute</button>
+                </li>
+                {% if x==2 %} {{result}}{%endif%}
+            </ol>
+        </form>
+    </div>
+    
+</div>
+</body>
+</html>

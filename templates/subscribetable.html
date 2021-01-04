@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SUBSCRIBE</title>
+    <link rel="stylesheet" href="../static/tables.css">
+    <style>
+       #formArea{
+            float: left;
+            overflow: auto;
+        }
+        .container{
+            overflow: auto;
+        }
+        #tableID{
+            float: left;
+            margin-left: 9%;
+        }
+        #secondPart{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-right: 4%;">SUBSCRIBE TABLE</h1>
+<div class="container">
+    <!--GETTING INPUT DATA FROM USER-->
+    <div id="formArea">
+        <form method="POST" action="">
+            <h2>ADD NEW ELEMENT</h2>
+            CUSTOMER ID <input type="number" name="C_ID" > <br>
+            GYM ID <input type="number" name="G_ID" style="margin-left: 50px;"><br>
+            START DATE <input type="date" name="START" style="margin-left: 15px;"><br>
+            END DATE <input type="date" name="END" style="margin-left: 30px;"><br>
+            <input type="submit" name="submit_button" value="add">
+            <input type="submit" name="submit_button" value="return">
+            <hr>
+            <h2>REMOVE AN ELEMENT BY ID</h2>
+            ID <input type="number" name="ID_remove" style="margin-left: 50px;" placeholder="Please enter an ID">
+            <input type="submit" name="submit_button" value="remove">
+            <input type="submit" name="submit_button" value="return">
+            <hr>
+            <h2>CHANGES BY WRITING</h2>
+            <h4>Write your code down below</h4>
+            <input type="text" name="code" style="width: 60%;">
+            <input type="submit" name="submit_button" value="submit">
+            <input type="submit" name="submit_button" value="return">
+            <br>
+        </form>
+            <ul >
+                <h4>Example for adding</h4>
+                <li style="font-weight: bold;">insert into subscribe values (ID,ID,'START_DATE','END_DATE'); </li>
+                <li>ID must be integer</li>
+                <li>START_DATE must be DATE</li>
+                <li>END_DATE must be DATE</li>
+            </ul>
+            <ul >
+                <h4>Example for deleting</h4>
+                <li style="font-weight: bold;">delete from subscribe where c_id/g_id/s_start_date/s_end_date ='Your text';</li>
+                <li>ID must be integer</li>
+                <li>START_DATE must be DATE</li>
+                <li>END_DATE must be DATE</li>
+            </ul>
+    </div>
+    <div id="tableID">
+        <table >
+            <!--THIS IS FOR TABLE HEADINGS-->
+            <tr>
+                <th>CUSTOMER ID</th>
+                <th>GYM ID</th>
+                <th>START_DATE</th>
+                <th>END_DATE</th>
+                {%if x==1%}
+                <th>GYM NAME</th>
+                {%endif%}
+            </tr>
+            <!--I USED FOR LOOP IN PYTHON LANGUAGE TO FILL ROWS-->
+            {% for result in results %}
+            <tr>
+                <td>{{ result[0] }}</td>
+                <td>{{ result[1]  }}</td>
+                <td>{{ result[2]  }}</td>
+                <td>{{ result[3]  }}</td>
+                <td>{{ result[4]  }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <!--bootstrapten aldigimiz kodu alert veya warning olarak degistirebiliyoruz-->
+                    <div class="alert {{category}} alert-dismissible fade show">{{message}}</div>
+                    {% endfor %}
+                {% endif %}
+        {% endwith %}
+    </div>
+    <div id="secondPart">
+        <form method="POST" >
+                <h2 style="text-align: center;" >WANNA EXECUTE COMPLEX COMMANDS ?</h2>
+            <ol>
+                <li>Use inner join to construct table has data from subscribe and gym 
+                    <!--i can create buttons with same text using this type of button-->
+                    <button type="input" name="submit_button" value="execute1">execute</button>  
+                </li>
+                <li>CHANGE ORDER - ORDER LIST BY GYM ID 
+                    <button type="input" name="submit_button" value="execute2">execute</button>
+                </li>
+            </ol>
+        </form>
+    </div>
+    
+</div>
+</body>
+</html>

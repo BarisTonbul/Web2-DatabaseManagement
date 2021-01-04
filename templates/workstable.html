@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WORKS</title>
+    <link rel="stylesheet" href="../static/tables.css">
+    <style>
+       #formArea{
+            float: left;
+            overflow: auto;
+        }
+        .container{
+            overflow: auto;
+        }
+        #tableID{
+            float: left;
+            margin-left: 27%;
+        }
+        #secondPart{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">WORKS TABLE</h1>
+<div class="container">
+    <!--GETTING INPUT DATA FROM USER-->
+    <div id="formArea">
+        <h2>ADD NEW ELEMENT</h2>
+        <form method="POST" action="">
+            PT ID <input type="number" name="PT_ID" style="margin-left: 19px;">  <br>
+            GYM ID <input type="number" name="GYM_ID"><br>
+            <input type="submit" name="submit_button" value="add">
+            <input type="submit" name="submit_button" value="return">
+            <hr>
+            <h2>REMOVE AN ELEMENT BY ID</h2>
+            ID <input type="number" name="ID_remove" style="margin-left: 50px;" placeholder="Please enter an ID">
+            <input type="submit" name="submit_button" value="remove">
+            <input type="submit" name="submit_button" value="return">
+            <hr>
+            <h2>CHANGES BY WRITING</h2>
+            <h4>Write your code down below</h4>
+            <input type="text" name="code" style="width: 60%;">
+            <input type="submit" name="submit_button" value="submit">
+            <input type="submit" name="submit_button" value="return">
+            <br>
+        </form>
+            <ul >
+                <h4>Example for adding</h4>
+                <li style="font-weight: bold;">insert into works values (ID,ID);</li>
+                <li>ID must be integer</li>
+            </ul>
+            <ul >
+                <h4>Example for deleting</h4>
+                <li style="font-weight: bold;">delete from works where pt_id/g_id ='Your text';</li>
+                <li>ID must be integer</li>
+            </ul>
+    </div>
+    <div id="tableID">
+        <table >
+            <!--THIS IS FOR TABLE HEADINGS-->
+            <tr>
+                <th>PT ID</th>
+                <th>GYM ID</th>
+                {%if x==1%}
+                <th>PT NAME</th>
+                {%endif%}
+            </tr>
+            <!--I USED FOR LOOP IN PYTHON LANGUAGE TO FILL ROWS-->
+            {% for result in results %}
+            <tr>
+                <td>{{ result[0] }}</td>
+                <td>{{ result[1]  }}</td>
+                <td>{{ result[2]  }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <!--bootstrapten aldigimiz kodu alert veya warning olarak degistirebiliyoruz-->
+                    <div class="alert {{category}} alert-dismissible fade show">{{message}}</div>
+                    {% endfor %}
+                {% endif %}
+        {% endwith %}
+    </div>
+    <div id="secondPart">
+        <form method="POST" >
+                <h2 style="text-align: center;" >WANNA EXECUTE COMPLEX COMMANDS ?</h2>
+            <ol>
+                <li>Use inner join to construct table has data from subscribe and gym 
+                    <!--i can create buttons with same text using this type of button-->
+                    <button type="input" name="submit_button" value="execute1">execute</button>  
+                </li>
+                <li>CHANGE ORDER - ORDER LIST BY GYM ID 
+                    <button type="input" name="submit_button" value="execute2">execute</button>
+                </li>
+            </ol>
+        </form>
+    </div>
+    
+</div>
+</body>
+</html>

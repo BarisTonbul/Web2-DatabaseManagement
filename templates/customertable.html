@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CUSTOMERS</title>
+    <link rel="stylesheet" href="../static/tables.css">
+    <style>
+        #formArea{
+            float: left;
+            overflow: auto;
+        }
+        .container{
+            overflow: auto;
+        }
+        #tableID{
+            float: left;
+            margin-left: 14%;
+        }
+        #secondPart{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;padding-right: 5%;"><h1 >CUSTOMER TABLE</h1></div>
+<div class="container">
+    <!--GETTING INPUT DATA FROM USER-->
+    <div id="formArea" >
+        <form method="POST" action="">
+            <h2>ADD NEW ELEMENT</h2>
+            ID <input type="number" name="ID" style="margin-left: 50px;"><br>
+            NAME <input type="text" name="NAME" style="margin-left: 20px;"><br>
+            GENDER <input type="text" name="GENDER" style="margin-left: 2px;"><br>
+            AGE <input type="number" name="AGE" style="margin-left: 34px;"> <br><br>
+            <input type="submit" name="submit_button" value="add">
+            <input type="submit" name="submit_button" value="return"><br><br>
+            <hr>
+            <h2>REMOVE AN ELEMENT BY ID</h2>
+            ID <input type="number" name="ID_remove" style="margin-left: 50px;" placeholder="Please enter an ID">
+            <input type="submit" name="submit_button" value="remove">
+            <input type="submit" name="submit_button" value="return"><br><br>
+            <hr>
+            <h2>CHANGES BY WRITING</h2>
+            <h4>Write your code down below</h4>
+            <input type="text" name="code" style="width: 60%;">
+            <input type="submit" name="submit_button" value="submit">
+            <input type="submit" name="submit_button" value="return">
+            <br>
+        </form>
+            <ul >
+                <h4>Example for adding</h4>
+                <li style="font-weight: bold;">insert into customer values (ID,'NAME','GENDER',AGE); </li>
+                <li>ID must be integer</li>
+                <li>NAME must be string</li>
+                <li>GENDER must be string</li>
+                <li>AGE must be integer</li>
+            </ul>
+            <ul >
+                <h4>Example for deleting</h4>
+                <li style="font-weight: bold;">delete from customer where c_id/c_name/c_gender/c_age ='Your text';</li>
+                <li>ID must be integer</li>
+                <li>NAME must be string</li>
+                <li>GENDER must be string</li>
+                <li>AGE must be integer</li>
+            </ul>
+    </div>
+    <div id="tableID">
+        <table>
+            <!--THIS IS FOR TABLE HEADINGS-->
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>GENDER</th>
+                <th>AGE</th>
+                {%if x==1%}
+                <th>GYM ID</th>
+                {%endif%}
+            </tr>
+            <!--I USED FOR LOOP IN PYTHON LANGUAGE TO FILL ROWS-->
+            {% for result in results %}
+            <tr>
+                <td>{{ result[0] }}</td>
+                <td>{{ result[1]  }}</td>
+                <td>{{ result[2] }}</td>
+                <td>{{ result[3] }}</td>
+                <td>{{ result[4] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <!--bootstrapten aldigimiz kodu alert veya warning olarak degistirebiliyoruz-->
+                    <div class="alert {{category}} alert-dismissible fade show">{{message}}</div>
+                    {% endfor %}
+                {% endif %}
+        {% endwith %}
+    </div>
+    <div id="secondPart">
+        <form method="POST" >
+                <h2 style="text-align: center;" >WANNA EXECUTE COMPLEX COMMANDS ?</h2>
+            <ol>
+                <li>Use inner join to construct table has data from customer and  subscribe 
+                    <!--i can create buttons with same text using this type of button-->
+                    <button type="input" name="submit_button" value="execute1">execute</button>  
+                </li>
+                <li>By entering the customer ID you can see which personal trainers work with you <br>
+                    <input type="number" name="ID_execute">
+                    <button type="input" name="submit_button" value="execute2">execute</button>
+                </li>
+                {% if x==2 %} {{result}}{%endif%}
+            </ol>
+        </form>
+    </div>
+    
+</div>
+</body>
+</html>
