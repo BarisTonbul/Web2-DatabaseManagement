@@ -9,7 +9,7 @@
 
 Errors that i didnt work on them;
 
--Remove button returns succesfull operation everytime because on mysql terminal it also works without any error when you try to delete an item that even not exists.
+- Remove button returns succesfull operation everytime because on mysql terminal it also works without any error when you try to delete an item that even not exists.
 - On GYM TABLE oldest person's age (2nd complex operation) not comes with error case. It just returns "none" when gym has 0 subscribers.
 - On PERSONAL TRAINER TABLE for 2nd complex operation it returns also "none" like in the gym_table. Another problem is it return average age with a string "Decimal" on front on it //Ex: ((Decimal,,32,455))
 
