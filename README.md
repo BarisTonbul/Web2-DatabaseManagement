@@ -8,8 +8,9 @@
 - For the signup page you must enter any password with more than 10 characters in length, there are no correct password i just wanna use flash() method in Flask.
 
 Errors that i didnt work on them;
--Remove button returns succesfull operation everytime because on mysql terminal it also works without any error when you try to delete an item that even not exists.
--On GYM TABLE oldest person's age (2nd complex operation) not comes with error case. It just returns "none" when gym has 0 subscribers.
--On PERSONAL TRAINER TABLE for 2nd complex operation it returns also "none" like in the gym_table. Another problem is it return average age with a string "Decimal" on front on it //Ex: ((Decimal,,32,455))
+
+- Remove button returns succesfull operation everytime because on mysql terminal it also works without any error when you try to delete an item that even not exists.
+- On GYM TABLE oldest person's age (2nd complex operation) not comes with error case. It just returns "none" when gym has 0 subscribers.
+- On PERSONAL TRAINER TABLE for 2nd complex operation it returns also "none" like in the gym_table. Another problem is it return average age with a string "Decimal" on front on it //Ex: ((Decimal,,32,455))
 
 ## I didint wanna work on them because they really are not big problem. I know how to fix them but it will be a lot of waste of time for me. I will learn how to fetch data as dictionary by using flask to fix some of theese problems.
